@@ -21,6 +21,7 @@ import android.widget.TextView;
 
 import com.application.schooltime.R;
 import com.application.schooltime.SplashScreen;
+import com.application.schooltime.Utilities.PrefManager;
 
 public class IntroSliderActivity extends AppCompatActivity {
 
@@ -111,15 +112,16 @@ public class IntroSliderActivity extends AppCompatActivity {
         if (dots.length > 0)
             dots[currentPage].setTextColor(colorsActive[currentPage]);
     }
+
     private int getItem(int i) {
         return viewPager.getCurrentItem() + i;
     }
+
     private void launchHomeScreen() {
         prefManager.setFirstTimeLaunch(false);
         startActivity(new Intent(IntroSliderActivity.this, SplashScreen.class));
         finish();
     }
-
 
     public class MyViewPagerAdapter extends PagerAdapter {
         private LayoutInflater layoutInflater;

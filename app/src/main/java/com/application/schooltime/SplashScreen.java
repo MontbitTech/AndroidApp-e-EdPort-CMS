@@ -6,6 +6,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Handler;
 
+import com.application.schooltime.SchoolInformation.SchoolInformationActivity;
+
 public class SplashScreen extends AppCompatActivity {
 
     @Override
@@ -23,7 +25,7 @@ public class SplashScreen extends AppCompatActivity {
 
             @Override
             public void run() {
-                Intent i = new Intent(SplashScreen.this, SchoolActivity.class);
+                Intent i = new Intent(SplashScreen.this, SchoolInformationActivity.class);
                 startActivity(i);
                 finish();
             }

@@ -24,10 +24,12 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 
+import com.application.schooltime.Utilities.PrefManager;
+
 
 public class SchoolActivity extends AppCompatActivity {
 
-    private static final String PAGE_URL = "https://cms001.schooltimes.ca/";
+    private  String PAGE_URL;
     private WebView webView;
     LinearLayout layout_error  ;
     Button  btn_retry ;
@@ -37,6 +39,8 @@ public class SchoolActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_school_times);
+
+        PAGE_URL= new PrefManager(this).getSchoolUrl();
 
         layout_error = findViewById(R.id.error_layout);
         btn_retry = findViewById(R.id.btn_retry);
