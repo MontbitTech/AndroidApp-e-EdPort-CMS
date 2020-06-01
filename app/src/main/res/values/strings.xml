@@ -1,4 +1,25 @@
 <resources>
     <string name="app_name">School Times</string>
     <string name="title_activity_school">SchoolTimes</string>
+
+
+    <string name="next">NEXT</string>
+    <string name="skip">SKIP</string>
+    <string name="start">GOT IT</string>
+
+
+    <string name="slide_1_title">Hello There!</string>
+    <string name="slide_1_desc">Welcome to our CMS Android App!</string>
+
+    <string name="slide_2_title">OUR CMS</string>
+    <string name="slide_2_desc">Find the best reference material to help you prepare!</string>
+
+    <string name="slide_3_title">TRACK YOUR PROGRESS</string>
+    <string name="slide_3_desc">Track your progress while completing independent modules!</string>
+
+    <string name="slide_4_title">ANIMATED CONTENT</string>
+    <string name="slide_4_desc">Get more insight though our animated representations!</string>
+
+    <string name="play_again_desc">To see the welcome slider again, goto Settings -> apps -> welcome slider -> clear data</string>
+    <string name="play_again">Play Again</string>
 </resources>

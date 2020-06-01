@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.Window;
 import android.webkit.CookieSyncManager;
 import android.webkit.SslErrorHandler;
+import android.webkit.WebChromeClient;
 import android.webkit.WebResourceError;
 import android.webkit.WebResourceRequest;
 import android.webkit.WebResourceResponse;
@@ -92,6 +93,9 @@ public class SchoolActivity extends AppCompatActivity {
             super.onReceivedSslError(view, handler, error);
 
         }
+
+
+
     }
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
