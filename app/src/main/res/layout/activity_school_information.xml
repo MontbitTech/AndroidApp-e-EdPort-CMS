@@ -3,32 +3,68 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
     android:background="@color/webViewDark"
+    android:weightSum="10"
+    android:layout_height="match_parent"
     tools:context=".SchoolInformation.SchoolInformationActivity">
 
-    <Spinner
-        android:textAlignment="center"
-        android:id="@+id/schools_spinner"
-        android:spinnerMode="dropdown"
-        android:padding="5dp"
-        android:background="@android:color/transparent"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
+    <androidx.cardview.widget.CardView
+        app:cardCornerRadius="16dp"
+        android:layout_margin="12dp"
+        android:elevation="8dp"
+        android:layout_weight="5"
         android:layout_centerInParent="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:background="@color/webViewDark"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:src="@drawable/logo"
+        android:layout_margin="5dp"
+        android:layout_centerHorizontal="true" />
+    <TextView
+        android:id="@+id/selectSchool"
+        android:layout_below="@+id/logo"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="5dp"
+        android:text="@string/please_select_your_school"
+        android:layout_width="wrap_content"
+        android:textStyle="bold"
+        android:textColor="@android:color/white"
+        android:textSize="24dp"
+        android:layout_height="wrap_content"
+       />
+    <Spinner
+        android:id="@+id/schools_spinner"
+        android:layout_width="fill_parent"
+        android:layout_below="@+id/selectSchool"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:spinnerMode="dropdown"
+        android:background="@drawable/spinner_background"
+        android:layout_centerHorizontal="true"
+        android:textAlignment="center"
         android:gravity="center_horizontal" />
 
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
 
 
     <Button
         android:id="@+id/btnSubmit"
-        android:layout_alignParentBottom="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="24sp"
-        android:text="@string/submit"
         android:layout_margin="8dp"
-        android:textStyle="bold"
-        android:textColor="@android:color/white"
-        android:background="@drawable/button_background" />
+       android:layout_alignParentBottom="true"
+        android:background="#253372"
+        android:text="@string/submit"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
+        android:textStyle="bold" />
 </RelativeLayout>

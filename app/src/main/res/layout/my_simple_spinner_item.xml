@@ -8,7 +8,9 @@
     android:textAlignment="center"
     android:layout_centerHorizontal="true"
     android:layout_height="36dp"
+    android:background="@color/webViewDark"
     android:ellipsize="marquee"
     android:singleLine="true"
+    android:textColor="@android:color/white"
     android:textSize="24sp"
     android:gravity="center_horizontal" />
