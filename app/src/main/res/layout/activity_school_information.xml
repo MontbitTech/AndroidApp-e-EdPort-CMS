@@ -35,7 +35,6 @@
         android:layout_margin="5dp"
         android:text="@string/please_select_your_school"
         android:layout_width="wrap_content"
-        android:textStyle="bold"
         android:textColor="@android:color/white"
         android:textSize="24dp"
         android:layout_height="wrap_content"

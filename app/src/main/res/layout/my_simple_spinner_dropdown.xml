@@ -9,7 +9,8 @@
     android:ellipsize="marquee"
     android:textAlignment="center"
     android:padding="5dp"
-    android:textColor="@android:color/white"
+    android:textStyle="bold"
+    android:textColor="@color/webViewDark"
     android:layout_centerHorizontal="true"
     android:singleLine="true"
     android:gravity="center_horizontal" />
