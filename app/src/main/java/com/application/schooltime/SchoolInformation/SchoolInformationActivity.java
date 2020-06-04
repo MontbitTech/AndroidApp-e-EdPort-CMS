@@ -3,7 +3,6 @@ package com.application.schooltime.SchoolInformation;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -15,7 +14,7 @@ import com.application.schooltime.R;
 import com.application.schooltime.SchoolActivity;
 import com.application.schooltime.Utilities.Constants;
 import com.application.schooltime.Utilities.PrefManager;
-import com.google.android.material.snackbar.Snackbar;
+
 
 public class SchoolInformationActivity extends AppCompatActivity {
 //********** THIS ACTIVITY WILL BE FIRED WHEN THE CHILD SELECTS HIS SCHOOL FOR THE FIRST TIME, OTHER THAN THAT IT WONT BE FIRED.....*********//
@@ -37,9 +36,11 @@ public class SchoolInformationActivity extends AppCompatActivity {
             finish();
         }
 
-        if (Build.VERSION.SDK_INT >= 21) {
-            getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
-        }
+//        if (Build.VERSION.SDK_INT >= 21) {
+//            getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
+//        }
+
+
 
         setContentView(R.layout.activity_school_information);
 
@@ -67,7 +68,7 @@ public class SchoolInformationActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(schoolId==0){
-                    Snackbar.make(v,"Please select a school",Snackbar.LENGTH_SHORT).show();
+
                 }
 
                 else if(schoolId==1){

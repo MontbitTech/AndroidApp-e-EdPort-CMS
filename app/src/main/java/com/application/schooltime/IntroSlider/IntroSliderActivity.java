@@ -1,11 +1,15 @@
 package com.application.schooltime.IntroSlider;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
+import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
@@ -20,6 +24,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.application.schooltime.R;
+import com.application.schooltime.SchoolActivity;
+import com.application.schooltime.SchoolInformation.SchoolInformationActivity;
 import com.application.schooltime.SplashScreen;
 import com.application.schooltime.Utilities.PrefManager;
 
@@ -49,6 +55,8 @@ public class IntroSliderActivity extends AppCompatActivity {
         }
 
         setContentView(R.layout.activity_intro_slider);
+
+
 
         viewPager = (ViewPager) findViewById(R.id.view_pager);
         dotsLayout = (LinearLayout) findViewById(R.id.layoutDots);
@@ -119,7 +127,7 @@ public class IntroSliderActivity extends AppCompatActivity {
 
     private void launchHomeScreen() {
         prefManager.setFirstTimeLaunch(false);
-        startActivity(new Intent(IntroSliderActivity.this, SplashScreen.class));
+        startActivity(new Intent(IntroSliderActivity.this, SchoolInformationActivity.class));
         finish();
     }
 

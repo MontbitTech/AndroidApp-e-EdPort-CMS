@@ -40,6 +40,7 @@ public class SchoolActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_school_times);
 
+        //
         PAGE_URL= new PrefManager(this).getSchoolUrl();
 
         layout_error = findViewById(R.id.error_layout);

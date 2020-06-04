@@ -24,7 +24,10 @@
         <activity
             android:name=".SchoolActivity"
             android:label="@string/title_activity_school"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar" >
+
+
+        </activity>
         <activity
             android:name=".SplashScreen"
             android:label="@string/title_activity_school"
