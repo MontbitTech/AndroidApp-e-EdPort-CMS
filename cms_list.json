@@ -1,6 +1,6 @@
 {
-    firstName: "Paras",
-    lastName: "Rawat",
-    gender: "Male",
-    age: 22 
+    "firstName": "Paras",
+    "lastName": "Rawat",
+    "gender": "Male",
+    "age": 22 
 }
