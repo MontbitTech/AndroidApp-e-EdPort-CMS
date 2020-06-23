@@ -29,6 +29,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.net.URI;
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class SchoolInformationActivity extends AppCompatActivity {
@@ -38,8 +40,9 @@ public class SchoolInformationActivity extends AppCompatActivity {
     int schoolId;
     String schoolName;
     Button btnSubmit;
-    String []schoolNames;
+   List<String> schoolNames;
     String []schoolUrls;
+    ArrayAdapter<String> schoolAdapter;
     public static final String TAG="response";
 
     @Override
@@ -64,6 +67,8 @@ public class SchoolInformationActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_school_information);
 
+        schoolSpinner= findViewById(R.id.schools_spinner);
+
 
         //**************************INITIATING API REQUEST USING VOLLEY//
         RequestQueue queue= Volley.newRequestQueue(this);
@@ -79,16 +84,19 @@ public class SchoolInformationActivity extends AppCompatActivity {
                     public void onResponse(JSONArray response) {
 
                         try {
-                            schoolNames= new String[response.length()];
+                            schoolNames= new ArrayList<>();
                             schoolUrls = new String[response.length()];
                             for(int i=0;i<response.length();i++){
 
                                 JSONObject school = response.getJSONObject(i);
 
-                                schoolNames[i]= school.getString("schoolName");
+                                schoolNames.add(school.getString("schoolName"));
                                 schoolUrls[i]= school.getString("schoolUrl");
 
                             }
+                            schoolAdapter=  new ArrayAdapter<String>(getApplicationContext(),R.layout.my_simple_spinner_dropdown, schoolNames);
+                            schoolAdapter.setDropDownViewResource(R.layout.my_simple_spinner_item);
+                            schoolSpinner.setAdapter(schoolAdapter);
 
                         }catch (Exception e){
                             e.printStackTrace();
@@ -106,11 +114,17 @@ public class SchoolInformationActivity extends AppCompatActivity {
 
         queue.add(jsonArrayRequest);
 
-        schoolSpinner= findViewById(R.id.schools_spinner);
-        ArrayAdapter<CharSequence> schoolAdapter= ArrayAdapter.createFromResource(this,R.array.schools_array,R.layout.my_simple_spinner_dropdown);
-        schoolAdapter.setDropDownViewResource(R.layout.my_simple_spinner_item);
-        schoolSpinner.setAdapter(schoolAdapter);
+
+
+
+
+
+
+
+
+
         btnSubmit=findViewById(R.id.btnSubmit);
+
         schoolSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -126,29 +140,30 @@ public class SchoolInformationActivity extends AppCompatActivity {
             }
         });
 
-        btnSubmit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(schoolId==0){
-                    // do nothing
-                }
-
-                else if(schoolId==1){
-                    prefManager.setSchoolFirstTime(schoolName);
-                    prefManager.setSchoolUrl(Constants.DEMO_SCHOOL_URL);
-                    startActivity(new Intent(SchoolInformationActivity.this,SchoolActivity.class));
-                    finish();
-                }
-                else{
-                    prefManager.setSchoolFirstTime(schoolName);
-                    prefManager.setSchoolUrl(Constants.MAIN_SCHOOL_URL);
-                    startActivity(new Intent(SchoolInformationActivity.this,SchoolActivity.class));
-                    finish();
-                }
-
-
-            }
-        });
+//        btnSubmit.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                if(schoolId==0){
+//                    // do nothing
+//                    // #todo
+//                }
+//
+//                else if(schoolId==1){
+//                    prefManager.setSchoolFirstTime(schoolName);
+//                    prefManager.setSchoolUrl(Constants.DEMO_SCHOOL_URL);
+//                    startActivity(new Intent(SchoolInformationActivity.this,SchoolActivity.class));
+//                    finish();
+//                }
+//                else{
+//                    prefManager.setSchoolFirstTime(schoolName);
+//                    prefManager.setSchoolUrl(Constants.MAIN_SCHOOL_URL);
+//                    startActivity(new Intent(SchoolInformationActivity.this,SchoolActivity.class));
+//                    finish();
+//                }
+//
+//
+//            }
+//        });
 
     }
 
