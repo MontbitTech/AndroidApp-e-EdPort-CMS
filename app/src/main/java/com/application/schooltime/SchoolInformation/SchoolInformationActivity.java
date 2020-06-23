@@ -4,16 +4,31 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.application.schooltime.R;
 import com.application.schooltime.SchoolActivity;
 import com.application.schooltime.Utilities.Constants;
 import com.application.schooltime.Utilities.PrefManager;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.net.URI;
 
 
 public class SchoolInformationActivity extends AppCompatActivity {
@@ -23,18 +38,20 @@ public class SchoolInformationActivity extends AppCompatActivity {
     int schoolId;
     String schoolName;
     Button btnSubmit;
-
+    String []schoolNames;
+    String []schoolUrls;
+    public static final String TAG="response";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         prefManager = new PrefManager(this);
-
-        if(prefManager.getSchool()!=null){
-            launchSchoolAcitivty();
-            finish();
-        }
+//*********************************ONE TIME CHECK ////////////////////////////
+//        if(prefManager.getSchool()!=null){
+//            launchSchoolAcitivty();
+//            finish();
+//        }
 
 //        if (Build.VERSION.SDK_INT >= 21) {
 //            getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
@@ -42,7 +59,52 @@ public class SchoolInformationActivity extends AppCompatActivity {
 
 
 
+
+
+
         setContentView(R.layout.activity_school_information);
+
+
+        //**************************INITIATING API REQUEST USING VOLLEY//
+        RequestQueue queue= Volley.newRequestQueue(this);
+        String url = "https://raw.githubusercontent.com/MontbitTech/e-EdPort-cms-app/master/cms_list.json";
+
+
+        JsonArrayRequest jsonArrayRequest= new JsonArrayRequest(
+                Request.Method.GET,
+                url,
+                null,
+                new Response.Listener<JSONArray>() {
+                    @Override
+                    public void onResponse(JSONArray response) {
+
+                        try {
+                            schoolNames= new String[response.length()];
+                            schoolUrls = new String[response.length()];
+                            for(int i=0;i<response.length();i++){
+
+                                JSONObject school = response.getJSONObject(i);
+
+                                schoolNames[i]= school.getString("schoolName");
+                                schoolUrls[i]= school.getString("schoolUrl");
+
+                            }
+
+                        }catch (Exception e){
+                            e.printStackTrace();
+                        }
+
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+
+                    }
+                }
+        );
+
+        queue.add(jsonArrayRequest);
 
         schoolSpinner= findViewById(R.id.schools_spinner);
         ArrayAdapter<CharSequence> schoolAdapter= ArrayAdapter.createFromResource(this,R.array.schools_array,R.layout.my_simple_spinner_dropdown);
@@ -68,7 +130,7 @@ public class SchoolInformationActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(schoolId==0){
-
+                    // do nothing
                 }
 
                 else if(schoolId==1){
