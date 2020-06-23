@@ -1,11 +1,20 @@
 [
  {
-    "schoolName": "School 1",
+    "schoolName": "Adarsh Public School",
     "schoolUrl": "https://cms001.schooltimes.ca"
 }
 ,
 {
-    "schoolName": "School 2",
+    "schoolName": "St. Mary's School",
+    "schoolUrl": "https://cms.schooltimes.ca"
+},
+ {
+    "schoolName": "DAV",
+    "schoolUrl": "https://cms.schooltimes.ca"
+},
+ {
+    "schoolName": "St. Xaviours",
     "schoolUrl": "https://cms.schooltimes.ca"
 }
+ 
 ]
