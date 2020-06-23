@@ -1,6 +1,11 @@
-{
-    "firstName": "Paras",
-    "lastName": "Rawat",
-    "gender": "Male",
-    "age": 22 
+[
+ {
+    "schoolName": "School 1",
+    "schoolUrl": "http://cms001.schooltimes.ca"
 }
+,
+{
+    "schoolName": "School 2",
+    "schoolUrl": "http://cms001.schooltimes.ca"
+}
+]
