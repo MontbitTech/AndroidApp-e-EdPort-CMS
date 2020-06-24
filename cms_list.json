@@ -1,20 +1,12 @@
 [
  {
     "schoolName": "Adarsh Public School",
-    "schoolUrl": "https://cms001.schooltimes.ca"
+    "schoolUrl": "https://cms.adarshsssmiran.in/"
 }
 ,
 {
-    "schoolName": "St. Mary's School",
-    "schoolUrl": "https://cms.schooltimes.ca"
-},
- {
-    "schoolName": "DAV",
-    "schoolUrl": "https://cms.schooltimes.ca"
-},
- {
-    "schoolName": "St. Xaviours",
-    "schoolUrl": "https://cms.schooltimes.ca"
+    "schoolName": "e-EdPort Online School",
+    "schoolUrl": "https://cms001.e-edport.com"
 }
  
 ]
