@@ -1,5 +1,6 @@
 package com.application.schooltime.IntroSlider;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
@@ -32,9 +33,7 @@ import com.application.schooltime.Utilities.PrefManager;
 public class IntroSliderActivity extends AppCompatActivity {
 
     private ViewPager viewPager;
-    private MyViewPagerAdapter myViewPagerAdapter;
     private LinearLayout dotsLayout;
-    private TextView[] dots;
     private int[]layouts ;
     private Button btnSkip, btnNext;
     private PrefManager prefManager;
@@ -71,7 +70,7 @@ public class IntroSliderActivity extends AppCompatActivity {
         };
         addBottomDots(0);
         changeStatusBarColor();
-        myViewPagerAdapter= new MyViewPagerAdapter();
+        MyViewPagerAdapter myViewPagerAdapter = new MyViewPagerAdapter();
         viewPager.setAdapter(myViewPagerAdapter);
 
         viewPager.addOnPageChangeListener(viewPagerPageChangeListener);
@@ -102,7 +101,7 @@ public class IntroSliderActivity extends AppCompatActivity {
     }
     private void addBottomDots(int currentPage) {
 
-        dots = new TextView[layouts.length];
+        TextView[] dots = new TextView[layouts.length];
 
         int[] colorsActive = getResources().getIntArray(R.array.array_dot_active);
         int[] colorsInactive = getResources().getIntArray(R.array.array_dot_inactive);
@@ -132,15 +131,16 @@ public class IntroSliderActivity extends AppCompatActivity {
     }
 
     public class MyViewPagerAdapter extends PagerAdapter {
-        private LayoutInflater layoutInflater;
 
-        public MyViewPagerAdapter() {
+        MyViewPagerAdapter() {
         }
 
+        @NonNull
         @Override
-        public Object instantiateItem(ViewGroup container, int position) {
-            layoutInflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        public Object instantiateItem(@NonNull ViewGroup container, int position) {
+            LayoutInflater layoutInflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
+            assert layoutInflater != null;
             View view = layoutInflater.inflate(layouts[position], container, false);
             container.addView(view);
 

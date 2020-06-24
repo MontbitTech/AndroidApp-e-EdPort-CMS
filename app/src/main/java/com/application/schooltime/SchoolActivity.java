@@ -1,5 +1,6 @@
 package com.application.schooltime;
 
+import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -111,6 +112,7 @@ public class SchoolActivity extends AppCompatActivity {
         return super.onKeyDown(keyCode, event);
     }
 
+    @SuppressLint("SetJavaScriptEnabled")
     private void initWebView() {
         webView = (WebView) findViewById(R.id.web);
         webView.setWebViewClient(new MyWebViewClient());
@@ -138,10 +140,7 @@ public class SchoolActivity extends AppCompatActivity {
     public boolean isInternetConnected() {
         ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
-        if (networkInfo != null && networkInfo.isConnected())
-            return true;
-        else
-            return false;
+        return networkInfo != null && networkInfo.isConnected();
 
     }
     @Override

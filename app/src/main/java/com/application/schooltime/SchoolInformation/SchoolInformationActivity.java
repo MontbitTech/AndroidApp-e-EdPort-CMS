@@ -5,12 +5,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.ProgressBar;
 import android.widget.Spinner;
 
 import com.android.volley.Request;
@@ -18,8 +16,6 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
-import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.application.schooltime.R;
 import com.application.schooltime.SchoolActivity;
@@ -28,10 +24,8 @@ import com.application.schooltime.Utilities.PrefManager;
 import com.google.android.material.snackbar.Snackbar;
 
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -41,7 +35,6 @@ public class SchoolInformationActivity extends AppCompatActivity {
     PrefManager prefManager;
     Spinner schoolSpinner;
     int schoolId;
-    String schoolName;
     Button btnSubmit;
     List<String> schoolNames;
     String[] schoolUrls;
@@ -54,9 +47,9 @@ public class SchoolInformationActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         prefManager = new PrefManager(this);
-//*********************************ONE TIME CHECK ////////////////////////////
+//*********************************ONE TIME CHECK
         if(prefManager.getSchoolUrl()!=null){
-            launchSchoolAcitivty();
+            launchSchoolActivity();
             finish();
         }
 
@@ -78,7 +71,7 @@ public class SchoolInformationActivity extends AppCompatActivity {
 
         //**************************INITIATING API REQUEST USING VOLLEY//
         RequestQueue queue = Volley.newRequestQueue(this);
-        String url = "https://raw.githubusercontent.com/MontbitTech/e-EdPort-cms-app/master/cms_list.json";
+        String url = Constants.API_URL;
 
 
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(
@@ -151,14 +144,14 @@ public class SchoolInformationActivity extends AppCompatActivity {
                 prefManager.setSchoolUrl(url);
 
                 Snackbar.make(v, url, Snackbar.LENGTH_LONG).show();
-                launchSchoolAcitivty();
+                launchSchoolActivity();
                 finish();
             }
         });
 
     }
 
-    private void launchSchoolAcitivty() {
+    private void launchSchoolActivity() {
         startActivity(new Intent(SchoolInformationActivity.this, SchoolActivity.class));
     }
 }
