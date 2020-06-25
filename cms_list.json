@@ -1,12 +1,10 @@
 [
  {
-    "schoolName": "Adarsh Public School",
-    "schoolUrl": "https://cms.adarshsssmiran.in/"
-}
-,
-{
     "schoolName": "e-EdPort Online School",
     "schoolUrl": "https://cms001.e-edport.com"
-}
- 
+},
+ {
+    "schoolName": "Adarsh Public School",
+    "schoolUrl": "https://cms.adarshsssmiran.in/"
+} 
 ]
