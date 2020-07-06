@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -12,7 +13,8 @@
         android:indeterminateTint="@color/colorPrimary"
         style="@style/Widget.AppCompat.ProgressBar.Horizontal"
         android:indeterminate="true"
-        android:id="@+id/progress"/>
+        android:id="@+id/progress"
+        tools:targetApi="lollipop" />
 
 
     <LinearLayout
@@ -27,23 +29,42 @@
         <ImageView
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:src="@drawable/ic_signal_24"/>
+            android:src="@drawable/ic_signal_24"
+            />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Check your connection !"/>
+            android:text="@string/check_your_connection"/>
         <Button
             android:id="@+id/btn_retry"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Retry"
+            android:text="@string/retry"
             android:layout_margin="50dp" />
     </LinearLayout>
     <WebView
         android:layout_below="@+id/progress"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/web"/>
+        android:id="@+id/web">
+
+
+
+    </WebView>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/floatingActionButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:clickable="true"
+            android:backgroundTint="@color/colorPrimaryDark"
+            android:focusable="true"
+            app:srcCompat="@android:drawable/ic_dialog_info"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_margin="5dp"
+            tools:targetApi="lollipop" />
     </RelativeLayout>
 
 </FrameLayout>

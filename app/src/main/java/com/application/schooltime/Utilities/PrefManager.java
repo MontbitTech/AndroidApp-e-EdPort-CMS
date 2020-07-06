@@ -1,5 +1,6 @@
 package com.application.schooltime.Utilities;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.SharedPreferences;
 
@@ -12,13 +13,13 @@ public class PrefManager {
     private SharedPreferences sharedPreferences;
     private SharedPreferences.Editor editor;
 
+    @SuppressLint("CommitPrefEdits")
     public PrefManager(Context context){
 
         sharedPreferences= context.getSharedPreferences(Constants.FILE_NAME,Constants.PRIVATE_MODE);
 
         editor= sharedPreferences.edit();
     }
-
     public void setFirstTimeLaunch(boolean isFirstTime){
 
         editor.putBoolean(Constants.IS_FIRST_LAUNCH,isFirstTime);

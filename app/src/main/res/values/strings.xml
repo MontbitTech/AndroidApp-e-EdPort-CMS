@@ -24,6 +24,8 @@
     <string name="play_again">Play Again</string>
     <string name="submit">submit</string>
     <string name="please_select_your_school">Please select your school</string>
+    <string name="check_your_connection">Check your connection !</string>
+    <string name="retry">Retry</string>
 
     <string-array name="schools_array">
         <item>-----SELECT----</item>

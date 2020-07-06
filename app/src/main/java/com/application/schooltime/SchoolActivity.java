@@ -1,8 +1,11 @@
 package com.application.schooltime;
 
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -25,7 +28,10 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 
+import com.application.schooltime.SchoolInformation.SchoolInformationActivity;
 import com.application.schooltime.Utilities.PrefManager;
+import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 
 public class SchoolActivity extends AppCompatActivity {
@@ -36,6 +42,7 @@ public class SchoolActivity extends AppCompatActivity {
     Button  btn_retry ;
     ProgressBar progress ;
 
+    FloatingActionButton floatingActionButton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,6 +53,7 @@ public class SchoolActivity extends AppCompatActivity {
 
         layout_error = findViewById(R.id.error_layout);
         btn_retry = findViewById(R.id.btn_retry);
+        floatingActionButton=findViewById(R.id.floatingActionButton);
         progress = findViewById(R.id.progress);
         btn_retry.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -56,6 +64,45 @@ public class SchoolActivity extends AppCompatActivity {
         CookieSyncManager.createInstance(this);
 
         initWebView();
+
+
+        //******************* SETTING UP THE ALERT DIALOG ********************************////////
+        final AlertDialog.Builder alertDialog = new AlertDialog.Builder(this, R.style.MyDialogTheme);
+        alertDialog.setMessage("This option will allow you to change your current school.\nDo you wish to proceed? ");
+        alertDialog.setIcon(R.drawable.alerticon);
+        alertDialog.setTitle("Change Schools");
+
+
+        alertDialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+                new PrefManager(getApplicationContext()).setSchoolUrl(null);
+                startSchoolInformationActivity();
+                finish();
+
+            }
+        });
+
+        alertDialog.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+
+        final AlertDialog alert = alertDialog.create();
+
+
+        ///////////////////*************** FLOATING ACTION BUTTON TO CHANGE THE SCHOOL **************/////////////////
+        floatingActionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                alert.show();
+
+            }
+        });
 
     }
 
@@ -153,5 +200,10 @@ public class SchoolActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         CookieSyncManager.getInstance().startSync();
+    }
+
+    void startSchoolInformationActivity(){
+        startActivity(new Intent(SchoolActivity.this, SchoolInformationActivity.class));
+        finish();
     }
 }

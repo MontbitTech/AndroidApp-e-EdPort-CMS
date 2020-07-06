@@ -51,13 +51,19 @@ public class SchoolInformationActivity extends AppCompatActivity {
         if(prefManager.getSchoolUrl()!=null){
             launchSchoolActivity();
             finish();
+
         }
+
 
 //        if (Build.VERSION.SDK_INT >= 21) {
 //            getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
 //        }
 
+        // Set the activity launch screen here**********//
         setContentView(R.layout.activity_school_information);
+
+        //#todo I need to correct the functionality of the progress bar also
+
         progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("Please wait while we fetch the schools information");
         progressDialog.setTitle("Fetching Schools Data");
