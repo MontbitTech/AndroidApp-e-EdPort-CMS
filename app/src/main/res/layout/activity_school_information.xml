@@ -17,7 +17,8 @@
         android:layout_height="250dp"
         android:src="@drawable/logo"
         android:layout_margin="5dp"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:contentDescription="@string/e_edport_icon" />
     <TextView
         android:id="@+id/selectSchool"
         android:layout_centerInParent="true"

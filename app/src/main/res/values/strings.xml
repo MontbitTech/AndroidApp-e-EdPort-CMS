@@ -26,6 +26,13 @@
     <string name="please_select_your_school">Please select your school</string>
     <string name="check_your_connection">Check your connection !</string>
     <string name="retry">Retry</string>
+    <string name="e_edport_icon">e-EdPort_icon</string>
+    <string name="no_signal_icon">no_signal_icon</string>
+    <string name="demo">Demo</string>
+    <string name="intro_slider_image_1">intro_slider_image_1</string>
+    <string name="intro_slider_image_2">intro_slider_image_2</string>
+    <string name="intro_slider_image_3">intro_slider_image_3</string>
+    <string name="intro_slider_image_4">intro_slider_image_4</string>
 
     <string-array name="schools_array">
         <item>-----SELECT----</item>
