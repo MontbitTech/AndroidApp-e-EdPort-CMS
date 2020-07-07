@@ -11,9 +11,15 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.http.SslError;
 import android.os.Bundle;
-import androidx.appcompat.app.AppCompatActivity;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
+
+import android.view.Gravity;
 import android.view.KeyEvent;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.webkit.CookieSyncManager;
@@ -32,6 +38,7 @@ import com.application.schooltime.SchoolInformation.SchoolInformationActivity;
 import com.application.schooltime.Utilities.PrefManager;
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.navigation.NavigationView;
 
 
 public class SchoolActivity extends AppCompatActivity {
@@ -39,10 +46,11 @@ public class SchoolActivity extends AppCompatActivity {
     private  String PAGE_URL;
     private WebView webView;
     LinearLayout layout_error  ;
+    DrawerLayout drawerLayout;
     Button  btn_retry ;
     ProgressBar progress ;
 
-    FloatingActionButton floatingActionButton;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,7 +61,7 @@ public class SchoolActivity extends AppCompatActivity {
 
         layout_error = findViewById(R.id.error_layout);
         btn_retry = findViewById(R.id.btn_retry);
-        floatingActionButton=findViewById(R.id.floatingActionButton);
+
         progress = findViewById(R.id.progress);
         btn_retry.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -93,16 +101,30 @@ public class SchoolActivity extends AppCompatActivity {
 
         final AlertDialog alert = alertDialog.create();
 
+/////////////////////////////////////////================================//////////////////////////////////////////
 
         ///////////////////*************** FLOATING ACTION BUTTON TO CHANGE THE SCHOOL **************/////////////////
-        floatingActionButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
 
-                alert.show();
 
-            }
-        });
+
+        //******************************************** NAVIGATION VIEW ***********************************/////////////
+
+        NavigationView view = findViewById(R.id.nav_view);
+        drawerLayout= findViewById(R.id.drawer_layout);
+
+     view.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+         @Override
+         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+             int id = item.getItemId();
+             if(id==R.id.nav_change_school){
+                 alert.show();
+
+             }
+             drawerLayout.closeDrawer(GravityCompat.START);
+             return true;
+         }
+     });
 
     }
 
@@ -150,10 +172,25 @@ public class SchoolActivity extends AppCompatActivity {
 
 
     }
+
+
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
-        if ((keyCode == KeyEvent.KEYCODE_BACK)) {
+
+
+        //************CONFIGURING BACK BUTTON FOR THE DRAWABLE LAYOUT *****************//
+
+        if(keyCode==KeyEvent.KEYCODE_BACK && drawerLayout.isDrawerOpen(GravityCompat.START) ){
+
+                drawerLayout.closeDrawer(GravityCompat.START);
+                return true;
+
+        }
+
+
+        else if ((keyCode == KeyEvent.KEYCODE_BACK)) {
             isCanGoBack();
+
             return true;
         }
         return super.onKeyDown(keyCode, event);
@@ -161,7 +198,7 @@ public class SchoolActivity extends AppCompatActivity {
 
     @SuppressLint("SetJavaScriptEnabled")
     private void initWebView() {
-        webView = (WebView) findViewById(R.id.web);
+        webView =  findViewById(R.id.web);
         webView.setWebViewClient(new MyWebViewClient());
         webView.getSettings().setJavaScriptEnabled(true);
         webView.getSettings().setDomStorageEnabled(true);

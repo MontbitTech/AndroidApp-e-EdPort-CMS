@@ -57,12 +57,11 @@ public class SchoolInformationActivity extends AppCompatActivity {
 
         prefManager = new PrefManager(this);
 //*********************************ONE TIME CHECK
-        if(prefManager.getSchoolUrl()!=null){
+        if (prefManager.getSchoolUrl() != null) {
             launchSchoolActivity();
             finish();
 
         }
-
 
 
 //        if (Build.VERSION.SDK_INT >= 21) {
@@ -108,7 +107,7 @@ public class SchoolInformationActivity extends AppCompatActivity {
                                 schoolNames.add(school.getString("schoolName"));
                                 schoolUrls[i] = school.getString("schoolUrl");
 
-                                int progress = 100/(response.length())*i;
+                                int progress = 100 / (response.length()) * i;
                                 progressDialog.incrementProgressBy(progress);
 
                             }
@@ -145,7 +144,6 @@ public class SchoolInformationActivity extends AppCompatActivity {
                 schoolId = position;
 
 
-
             }
 
             @Override
@@ -170,7 +168,7 @@ public class SchoolInformationActivity extends AppCompatActivity {
 
     }
 
-    private void launchSchoolActivity(){
+    private void launchSchoolActivity() {
 
         startActivity(new Intent(SchoolInformationActivity.this, SchoolActivity.class));
     }
