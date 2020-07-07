@@ -1,5 +1,6 @@
 package com.application.schooltime.Utilities;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.SharedPreferences;
 
@@ -7,20 +8,21 @@ import com.application.schooltime.Utilities.Constants;
 
 public class PrefManager {
 
-    //*************************THIS CLASS IS USED FOR STORING SHARED PREFERENCES **********************//
+    //*************************THIS CLASS IS USED FOR STORING SHARED PREFERENCES ALL THE SHARED PREFERENCES RELATED CODE SHALL BE WRITTEN HERE TO AVOID REDUNDANCY **********************//
 
-    SharedPreferences sharedPreferences;
-    SharedPreferences.Editor editor;
-    Context context;
+    private SharedPreferences sharedPreferences;
+    private SharedPreferences.Editor editor;
+
+    @SuppressLint("CommitPrefEdits")
     public PrefManager(Context context){
-        this.context= context;
+
         sharedPreferences= context.getSharedPreferences(Constants.FILE_NAME,Constants.PRIVATE_MODE);
 
         editor= sharedPreferences.edit();
-
-
     }
 
+
+    //************* FOR FIRST TIME LAUNCH *************////////////
     public void setFirstTimeLaunch(boolean isFirstTime){
 
         editor.putBoolean(Constants.IS_FIRST_LAUNCH,isFirstTime);
@@ -33,16 +35,8 @@ public class PrefManager {
 
     }
 
-    public void setSchoolFirstTime(String schoolName){
-        editor.putString(Constants.SCHOOL_NAME, schoolName);
-        editor.commit();
-    }
 
-    public String getSchool(){
-        //THIS WILL RETURN SCHOOL NAME IS PRESENT OTHERWIESE IT WILL RETURN NULL
-        return sharedPreferences.getString(Constants.SCHOOL_NAME,null);
-    }
-
+    //************** FOR SCHOOL URL STORED IN THE USER'S DEVICE ***************/////
     public void setSchoolUrl(String url){
         editor.putString(Constants.SCHOOL_URL,url);
         editor.commit();

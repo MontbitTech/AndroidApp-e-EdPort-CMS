@@ -6,11 +6,7 @@
 
 
 
-<androidx.cardview.widget.CardView
-    android:layout_margin="8dp"
-    android:layout_centerInParent="true"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+
     <RelativeLayout
         android:background="@color/webViewDark"
         android:layout_width="match_parent"
@@ -21,16 +17,17 @@
         android:layout_height="250dp"
         android:src="@drawable/logo"
         android:layout_margin="5dp"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:contentDescription="@string/e_edport_icon" />
     <TextView
         android:id="@+id/selectSchool"
-        android:layout_below="@+id/logo"
+        android:layout_centerInParent="true"
         android:layout_centerHorizontal="true"
         android:layout_margin="5dp"
         android:text="@string/please_select_your_school"
         android:layout_width="wrap_content"
         android:textColor="@android:color/white"
-        android:textSize="24dp"
+        android:textSize="24sp"
         android:layout_height="wrap_content"
        />
     <Spinner
@@ -45,7 +42,7 @@
         android:textAlignment="center"
         android:gravity="center_horizontal" />
     </RelativeLayout>
-</androidx.cardview.widget.CardView>
+
 
     <Button
         android:id="@+id/btnSubmit"
