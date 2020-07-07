@@ -39,7 +39,7 @@ public class SchoolInformationActivity extends AppCompatActivity {
     List<String> schoolNames;
     String[] schoolUrls;
     ArrayAdapter<String> schoolAdapter;
-    public static final String TAG = "response";
+    //public static final String TAG = "response";
     ProgressDialog progressDialog;
 
     @Override
@@ -105,7 +105,7 @@ public class SchoolInformationActivity extends AppCompatActivity {
 
                             //***** setting up the adapter ************//
 
-                            schoolAdapter = new ArrayAdapter<String>(getApplicationContext(), R.layout.my_simple_spinner_dropdown, schoolNames);
+                            schoolAdapter = new ArrayAdapter<>(getApplicationContext(), R.layout.my_simple_spinner_dropdown, schoolNames);
                             schoolAdapter.setDropDownViewResource(R.layout.my_simple_spinner_item);
                             schoolSpinner.setAdapter(schoolAdapter);
                             progressDialog.dismiss();
