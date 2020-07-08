@@ -14,9 +14,9 @@
         tools:ignore="UselessParent">
 
         <ImageView
-            android:layout_width="@dimen/img_width_height"
-            android:layout_height="@dimen/img_width_height"
-            android:src="@drawable/animation"
+            android:layout_width="300dp"
+            android:layout_height="400dp"
+            android:src="@drawable/cotentresize"
             android:contentDescription="@string/intro_slider_image_4" />
 
         <TextView
