@@ -14,4 +14,14 @@
         android:src="@drawable/ic_launcher"
         tools:ignore="ContentDescription" />
 
+    <ImageView
+        android:layout_width="200dp"
+        android:layout_height="100dp"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:src="@drawable/madeinindia"
+        tools:ignore="ContentDescription" />
+
+
+
 </RelativeLayout>
