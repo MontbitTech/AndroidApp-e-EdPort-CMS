@@ -33,6 +33,8 @@
     <string name="intro_slider_image_2">intro_slider_image_2</string>
     <string name="intro_slider_image_3">intro_slider_image_3</string>
     <string name="intro_slider_image_4">intro_slider_image_4</string>
+    <string name="change_your_school">CHANGE YOUR SCHOOL</string>
+    <string name="right_swipe_from_the_left_corner_of_the_screen_to_get_the_change_school_menu">Right swipe from the left corner of the screen to get the change school menu</string>
 
     <string-array name="schools_array">
         <item>-----SELECT----</item>

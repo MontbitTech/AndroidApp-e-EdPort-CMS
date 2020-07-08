@@ -64,7 +64,8 @@ public class IntroSliderActivity extends AppCompatActivity {
                 R.layout.welcomescreen1,
                 R.layout.welcomescreen2,
                 R.layout.welcomescreen3,
-                R.layout.welcomescreen4
+                R.layout.welcomescreen4,
+                R.layout.welcomescreen5
         };
         addBottomDots(0);
         changeStatusBarColor();
