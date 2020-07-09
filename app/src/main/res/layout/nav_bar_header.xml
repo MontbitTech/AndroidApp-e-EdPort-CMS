@@ -25,7 +25,7 @@
         android:textAlignment="center"
         android:textColor = "#FFF"
         android:textStyle = "bold"
-        android:text = "E-edPort CMS"
+        android:text = "@string/e_edport_cms"
         android:textAppearance = "@style/TextAppearance.AppCompat.Body1" />
     <TextView
         android:id = "@+id/textView"
@@ -33,7 +33,7 @@
         android:textAlignment="center"
         android:layout_width = "match_parent"
         android:layout_height = "wrap_content"
-        android:text = "This option will allow you to change your current school"
+        android:text = "@string/this_option_will_allow_you_to_change_your_current_school"
         android:gravity="center_horizontal" />
 
 </LinearLayout>

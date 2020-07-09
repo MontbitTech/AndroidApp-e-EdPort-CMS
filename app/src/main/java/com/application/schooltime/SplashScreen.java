@@ -7,7 +7,7 @@ import android.content.Intent;
 import android.os.Handler;
 
 import com.application.schooltime.IntroSlider.IntroSliderActivity;
-import com.application.schooltime.SchoolInformation.SchoolInformationActivity;
+
 
 public class SplashScreen extends AppCompatActivity {
 

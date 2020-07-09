@@ -152,13 +152,13 @@ public class IntroSliderActivity extends AppCompatActivity {
         }
 
         @Override
-        public boolean isViewFromObject(View view, Object obj) {
+        public boolean isViewFromObject(@NonNull View view, @NonNull Object obj) {
             return view == obj;
         }
 
 
         @Override
-        public void destroyItem(ViewGroup container, int position, Object object) {
+        public void destroyItem(ViewGroup container, int position, @NonNull Object object) {
             View view = (View) object;
             container.removeView(view);
         }
