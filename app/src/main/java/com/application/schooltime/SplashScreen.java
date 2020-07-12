@@ -6,7 +6,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Handler;
 
-import com.application.schooltime.SchoolInformation.SchoolInformationActivity;
+import com.application.schooltime.IntroSlider.IntroSliderActivity;
+
 
 public class SplashScreen extends AppCompatActivity {
 
@@ -15,7 +16,7 @@ public class SplashScreen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
 
-        int SPLASH_TIME_OUT = 3000;
+        int SPLASH_TIME_OUT = 1500;
         new Handler().postDelayed(new Runnable() {
 
             /*
@@ -25,7 +26,7 @@ public class SplashScreen extends AppCompatActivity {
 
             @Override
             public void run() {
-                Intent i = new Intent(SplashScreen.this, SchoolInformationActivity.class);
+                Intent i = new Intent(SplashScreen.this, IntroSliderActivity.class);
                 startActivity(i);
                 finish();
             }

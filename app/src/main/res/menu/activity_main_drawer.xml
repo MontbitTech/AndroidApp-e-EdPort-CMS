@@ -7,7 +7,7 @@
             <item
                 android:id = "@+id/nav_change_school"
 
-                android:icon = "@android:drawable/ic_dialog_info"
+                android:icon = "@drawable/revert"
                 android:title = "Change Your School" />
 
 

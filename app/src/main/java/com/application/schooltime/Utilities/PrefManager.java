@@ -4,7 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.SharedPreferences;
 
-import com.application.schooltime.Utilities.Constants;
+
 
 public class PrefManager {
 

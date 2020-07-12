@@ -17,7 +17,7 @@
     <string name="slide_3_title">TRACK YOUR PROGRESS</string>
     <string name="slide_3_desc">Track your progress while completing independent modules!</string>
 
-    <string name="slide_4_title">ANIMATED CONTENT</string>
+    <string name="slide_4_title">AWESOME CONTENT</string>
     <string name="slide_4_desc">Get more insight though our animated representations!</string>
 
     <string name="play_again_desc">To see the welcome slider again, goto Settings -> apps -> welcome slider -> clear data</string>
@@ -33,6 +33,10 @@
     <string name="intro_slider_image_2">intro_slider_image_2</string>
     <string name="intro_slider_image_3">intro_slider_image_3</string>
     <string name="intro_slider_image_4">intro_slider_image_4</string>
+    <string name="change_your_school">CHANGE YOUR SCHOOL</string>
+    <string name="right_swipe_from_the_left_corner_of_the_screen_to_get_the_change_school_menu">Right swipe from the left corner of the screen to get the change school menu</string>
+    <string name="e_edport_cms">E-edPort CMS</string>
+    <string name="this_option_will_allow_you_to_change_your_current_school">This option will allow you to change your current school</string>
 
     <string-array name="schools_array">
         <item>-----SELECT----</item>
