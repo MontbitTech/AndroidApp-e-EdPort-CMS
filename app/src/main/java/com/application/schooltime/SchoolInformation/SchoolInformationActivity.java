@@ -152,6 +152,7 @@ public class SchoolInformationActivity extends AppCompatActivity {
             }
         });
 
+        //indifaodianodidoaisjdoiasjodis
         btnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
