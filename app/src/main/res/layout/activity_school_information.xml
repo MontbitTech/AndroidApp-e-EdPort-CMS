@@ -6,11 +6,6 @@
 
 
 
-
-    <RelativeLayout
-        android:background="@color/webViewDark"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
     <ImageView
         android:id="@+id/logo"
         android:layout_width="250dp"
@@ -30,29 +25,41 @@
         android:textSize="24sp"
         android:layout_height="wrap_content"
        />
-    <Spinner
-        android:id="@+id/schools_spinner"
-        android:layout_width="fill_parent"
-        android:layout_below="@+id/selectSchool"
-        android:layout_height="wrap_content"
-        android:layout_margin="5dp"
-        android:spinnerMode="dropdown"
-        android:background="@drawable/spinner_background"
-        android:layout_centerHorizontal="true"
-        android:textAlignment="center"
-        android:gravity="center_horizontal" />
-    </RelativeLayout>
+
+<!--    <Spinner-->
+<!--        android:id="@+id/schools_spinner"-->
+<!--        android:layout_width="fill_parent"-->
+<!--        android:layout_below="@+id/selectSchool"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_margin="5dp"-->
+<!--        android:spinnerMode="dropdown"-->
+<!--        android:background="@drawable/spinner_background"-->
+<!--        android:layout_centerHorizontal="true"-->
+<!--        android:textAlignment="center"-->
+<!--        android:gravity="center_horizontal" />-->
 
 
-    <Button
-        android:id="@+id/btnSubmit"
+    <SearchView
+        android:id="@+id/searchView"
         android:layout_width="match_parent"
+        android:background="@drawable/spinner_background"
+        android:layout_below="@+id/selectSchool"
+        android:textAlignment="center"
+        android:layout_marginLeft="8dp"
+        android:queryHint="Search School"
+        android:layout_marginEnd="8dp"
+        android:iconifiedByDefault="false"
         android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-       android:layout_alignParentBottom="true"
-        android:background="#253372"
-        android:text="@string/submit"
-        android:textColor="#FFFFFF"
-        android:textSize="24sp"
-        android:textStyle="bold" />
+        android:gravity="center_horizontal"
+        android:layout_marginStart="8dp" />
+
+    <ListView
+        android:id="@+id/listView"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/searchView"
+        android:layout_margin="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"/>
+
+
 </RelativeLayout>

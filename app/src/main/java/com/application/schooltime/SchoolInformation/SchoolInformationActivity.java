@@ -8,12 +8,17 @@ import android.app.ProgressDialog;
 
 import android.content.Intent;
 
+import android.database.MatrixCursor;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ListView;
+import android.widget.SearchView;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 
 import com.android.volley.Request;
@@ -38,9 +43,12 @@ import java.util.List;
 public class SchoolInformationActivity extends AppCompatActivity {
     //********** THIS ACTIVITY WILL BE FIRED WHEN THE CHILD SELECTS HIS SCHOOL FOR THE FIRST TIME, OTHER THAN THAT IT WONT BE FIRED.....*********//
     PrefManager prefManager;
-    Spinner schoolSpinner;
+//    Spinner schoolSpinner;
     int schoolId;
-    Button btnSubmit;
+
+
+    ListView listView;
+    SearchView searchView;
 
     List<String> schoolNames;
     String[] schoolUrls;
@@ -71,6 +79,10 @@ public class SchoolInformationActivity extends AppCompatActivity {
 
         //#todo I need to correct the functionality of the progress bar also
 
+        searchView = findViewById(R.id.searchView);
+        listView= findViewById(R.id.listView);
+
+
         progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("Please wait while we fetch the schools information");
         progressDialog.setTitle("Fetching Schools Data");
@@ -79,7 +91,7 @@ public class SchoolInformationActivity extends AppCompatActivity {
         progressDialog.setMax(100);
         progressDialog.show();
 
-        schoolSpinner = findViewById(R.id.schools_spinner);
+//        schoolSpinner = findViewById(R.id.schools_spinner);
 
 
         //**************************INITIATING API REQUEST USING VOLLEY//
@@ -113,8 +125,14 @@ public class SchoolInformationActivity extends AppCompatActivity {
                             //***** setting up the adapter ************//
 
                             schoolAdapter = new ArrayAdapter<>(getApplicationContext(), R.layout.my_simple_spinner_dropdown, schoolNames);
-                            schoolAdapter.setDropDownViewResource(R.layout.my_simple_spinner_item);
-                            schoolSpinner.setAdapter(schoolAdapter);
+
+//                            listView.setAdapter(schoolAdapter);
+//                            schoolAdapter.setDropDownViewResource(R.layout.my_simple_spinner_item);
+//                            schoolSpinner.setAdapter(schoolAdapter);
+
+
+
+
                             progressDialog.dismiss();
                         } catch (Exception e) {
                             e.printStackTrace();
@@ -133,37 +151,92 @@ public class SchoolInformationActivity extends AppCompatActivity {
         queue.add(jsonArrayRequest);
 
 
-        btnSubmit = findViewById(R.id.btnSubmit);
 
 
-        schoolSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+
+//        schoolSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+//            @Override
+//            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+//                schoolId = position;
+//
+//
+//            }
+//
+//            @Override
+//            public void onNothingSelected(AdapterView<?> parent) {
+//
+//            }
+//        });
+
+
+        /*
+        * SEARCH VIEW IMPLEMENTATION
+        * */
+        /*
+        * CREATING A BLANK ADAPTOR*/
+        final ArrayAdapter<String> blankAdaptor = new ArrayAdapter<>(getApplicationContext(), R.layout.my_simple_spinner_dropdown, new ArrayList<String>());
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                schoolId = position;
+            public boolean onQueryTextSubmit(String query) {
 
 
+                return true;
             }
 
             @Override
-            public void onNothingSelected(AdapterView<?> parent) {
+            public boolean onQueryTextChange(String newText) {
 
+                if(newText.trim().length()>0) {
+                    schoolAdapter.getFilter().filter(newText.trim());
+
+                    listView.setAdapter(schoolAdapter);
+                }
+                else{
+
+                    listView.setAdapter(blankAdaptor);
+                }
+
+                return true;
             }
         });
 
-        //indifaodianodidoaisjdoiasjodis
-        btnSubmit.setOnClickListener(new View.OnClickListener() {
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String school = parent.getItemAtPosition(position).toString();
 
-                String url = schoolUrls[schoolId];
+                searchView.setQuery(school, true);
+                listView.setAdapter(blankAdaptor);
+
+                String url = schoolUrls[position];
 
                 prefManager.setSchoolUrl(url);
 
-                Snackbar.make(v, url, Snackbar.LENGTH_LONG).show();
+
                 launchSchoolActivity();
                 finish();
+
+
             }
         });
+
+
+
+
+//        btnSubmit.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//                String url = schoolUrls[schoolId];
+//
+//                prefManager.setSchoolUrl(url);
+//
+//                Snackbar.make(v, url, Snackbar.LENGTH_LONG).show();
+//                launchSchoolActivity();
+//                finish();
+//            }
+//        });
 
     }
 

@@ -8,6 +8,7 @@
     android:ellipsize="marquee"
     android:textAlignment="center"
     android:padding="5dp"
+    android:background="@drawable/spinner_background"
     android:textStyle="bold"
     android:textColor="@color/webViewDark"
     android:layout_centerHorizontal="true"

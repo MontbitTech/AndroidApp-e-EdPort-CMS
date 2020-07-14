@@ -23,7 +23,7 @@
     <string name="play_again_desc">To see the welcome slider again, goto Settings -> apps -> welcome slider -> clear data</string>
     <string name="play_again">Play Again</string>
     <string name="submit">submit</string>
-    <string name="please_select_your_school">Please select your school</string>
+    <string name="please_select_your_school">Please enter your school name</string>
     <string name="check_your_connection">Check your connection !</string>
     <string name="retry">Retry</string>
     <string name="e_edport_icon">e-EdPort_icon</string>
@@ -37,6 +37,8 @@
     <string name="right_swipe_from_the_left_corner_of_the_screen_to_get_the_change_school_menu">Right swipe from the left corner of the screen to get the change school menu</string>
     <string name="e_edport_cms">E-edPort CMS</string>
     <string name="this_option_will_allow_you_to_change_your_current_school">This option will allow you to change your current school</string>
+    <string name="app_label">Label</string>
+    <string name="search_hint">Search School Name</string>
 
     <string-array name="schools_array">
         <item>-----SELECT----</item>
