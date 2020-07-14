@@ -4,8 +4,10 @@ package com.application.schooltime.SchoolInformation;
 import androidx.appcompat.app.AppCompatActivity;
 
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 
 import android.database.MatrixCursor;
@@ -78,6 +80,7 @@ public class SchoolInformationActivity extends AppCompatActivity {
         setContentView(R.layout.activity_school_information);
 
         //#todo I need to correct the functionality of the progress bar also
+        //#todo I need to implement a dialog interface before proceeding for the next activity
 
         searchView = findViewById(R.id.searchView);
         listView= findViewById(R.id.listView);
@@ -94,7 +97,9 @@ public class SchoolInformationActivity extends AppCompatActivity {
 //        schoolSpinner = findViewById(R.id.schools_spinner);
 
 
-        //**************************INITIATING API REQUEST USING VOLLEY//
+        /*
+        * INITIATE A NEW API REQUEST USING VOLLEY API FROM ANDROID
+        * */
         RequestQueue queue = Volley.newRequestQueue(this);
         String url = Constants.API_URL;
 
@@ -148,25 +153,10 @@ public class SchoolInformationActivity extends AppCompatActivity {
                 }
         );
 
+
+        // MAKE THE API REQUEST
+
         queue.add(jsonArrayRequest);
-
-
-
-
-
-//        schoolSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-//            @Override
-//            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-//                schoolId = position;
-//
-//
-//            }
-//
-//            @Override
-//            public void onNothingSelected(AdapterView<?> parent) {
-//
-//            }
-//        });
 
 
         /*
@@ -201,13 +191,57 @@ public class SchoolInformationActivity extends AppCompatActivity {
             }
         });
 
+
+        /*
+        * ADDING CLICK FUNCTIONALITY ON THE LIST VIEW ITSELF
+        * */
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
                 String school = parent.getItemAtPosition(position).toString();
 
                 searchView.setQuery(school, true);
                 listView.setAdapter(blankAdaptor);
+
+//                String url = schoolUrls[position];
+//
+//                prefManager.setSchoolUrl(url);
+//
+//
+//                launchSchoolActivity();
+//                finish();
+
+                showAlertDialog(school,position);
+
+
+            }
+        });
+
+
+        /*
+        * ALERT DIALOG FUNCTIONALITY
+        *
+        * */
+
+
+    }
+
+    private void launchSchoolActivity() {
+
+        startActivity(new Intent(SchoolInformationActivity.this, SchoolActivity.class));
+    }
+
+    private void showAlertDialog(String school, final int position){
+
+        AlertDialog.Builder alertDialog = new AlertDialog.Builder(this, R.style.MyDialogTheme);
+        alertDialog.setMessage("Do you wish to proceed with "+school+" ? ");
+        alertDialog.setIcon(R.drawable.alerticon);
+        alertDialog.setTitle("Select School");
+
+        alertDialog.setPositiveButton("Confirm", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
 
                 String url = schoolUrls[position];
 
@@ -217,31 +251,23 @@ public class SchoolInformationActivity extends AppCompatActivity {
                 launchSchoolActivity();
                 finish();
 
+            }
+        });
+
+        alertDialog.setNegativeButton("Reject", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+                searchView.setQuery("",false);
+                dialog.dismiss();
+
 
             }
         });
 
+        final AlertDialog alert = alertDialog.create();
 
+        alert.show();
 
-
-//        btnSubmit.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//                String url = schoolUrls[schoolId];
-//
-//                prefManager.setSchoolUrl(url);
-//
-//                Snackbar.make(v, url, Snackbar.LENGTH_LONG).show();
-//                launchSchoolActivity();
-//                finish();
-//            }
-//        });
-
-    }
-
-    private void launchSchoolActivity() {
-
-        startActivity(new Intent(SchoolInformationActivity.this, SchoolActivity.class));
     }
 }
