@@ -38,6 +38,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 
@@ -57,6 +58,8 @@ public class SchoolInformationActivity extends AppCompatActivity {
     ArrayAdapter<String> schoolAdapter;
     //public static final String TAG = "response";
     ProgressDialog progressDialog;
+
+    HashMap<String,String> map;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,7 +87,7 @@ public class SchoolInformationActivity extends AppCompatActivity {
 
         searchView = findViewById(R.id.searchView);
         listView= findViewById(R.id.listView);
-
+        map = new HashMap<>();
 
         progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("Please wait while we fetch the schools information");
@@ -121,6 +124,18 @@ public class SchoolInformationActivity extends AppCompatActivity {
 
                                 schoolNames.add(school.getString("schoolName"));
                                 schoolUrls[i] = school.getString("schoolUrl");
+
+                                String schoolName = school.getString("schoolName");
+
+                                String schoolUrl = school.getString("schoolUrl");
+
+
+                                /*
+                                * POPULATING HASHMAP
+                                * */
+
+                                map.put(schoolName,schoolUrl);
+
 
                                 int progress = 100 / (response.length()) * i;
                                 progressDialog.incrementProgressBy(progress);
@@ -232,7 +247,7 @@ public class SchoolInformationActivity extends AppCompatActivity {
         startActivity(new Intent(SchoolInformationActivity.this, SchoolActivity.class));
     }
 
-    private void showAlertDialog(String school, final int position){
+    private void showAlertDialog(final String school, final int position){
 
         AlertDialog.Builder alertDialog = new AlertDialog.Builder(this, R.style.MyDialogTheme);
         alertDialog.setMessage("Do you wish to proceed with "+school+" ? ");
@@ -243,7 +258,7 @@ public class SchoolInformationActivity extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialog, int which) {
 
-                String url = schoolUrls[position];
+                String url = map.get(school);
 
                 prefManager.setSchoolUrl(url);
 
