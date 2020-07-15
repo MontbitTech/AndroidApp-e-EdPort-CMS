@@ -10,17 +10,16 @@ import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 
-import android.database.MatrixCursor;
+
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Adapter;
+
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
+
 import android.widget.ListView;
 import android.widget.SearchView;
-import android.widget.Spinner;
-import android.widget.TextView;
+
 
 
 import com.android.volley.Request;
@@ -33,7 +32,7 @@ import com.application.schooltime.R;
 import com.application.schooltime.SchoolActivity;
 import com.application.schooltime.Utilities.Constants;
 import com.application.schooltime.Utilities.PrefManager;
-import com.google.android.material.snackbar.Snackbar;
+
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -43,6 +42,7 @@ import java.util.List;
 
 
 public class SchoolInformationActivity extends AppCompatActivity {
+    
     //********** THIS ACTIVITY WILL BE FIRED WHEN THE CHILD SELECTS HIS SCHOOL FOR THE FIRST TIME, OTHER THAN THAT IT WONT BE FIRED.....*********//
     PrefManager prefManager;
 //    Spinner schoolSpinner;
