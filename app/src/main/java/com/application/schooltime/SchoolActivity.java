@@ -2,7 +2,6 @@ package com.application.schooltime;
 
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
-import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -14,17 +13,15 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
-import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.Window;
 import android.webkit.CookieSyncManager;
 import android.webkit.SslErrorHandler;
-import android.webkit.WebChromeClient;
 import android.webkit.WebResourceError;
 import android.webkit.WebResourceRequest;
 import android.webkit.WebResourceResponse;
@@ -36,8 +33,6 @@ import android.widget.ProgressBar;
 
 import com.application.schooltime.SchoolInformation.SchoolInformationActivity;
 import com.application.schooltime.Utilities.PrefManager;
-import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 
 
@@ -56,7 +51,11 @@ public class SchoolActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_school_times);
 
-        //
+
+
+
+
+
         PAGE_URL= new PrefManager(this).getSchoolUrl();
 
         layout_error = findViewById(R.id.error_layout);

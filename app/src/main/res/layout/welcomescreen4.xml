@@ -15,17 +15,10 @@
 
         <ImageView
             android:layout_width="300dp"
-            android:layout_height="400dp"
+            android:layout_height="500dp"
             android:src="@drawable/cotentresize"
             android:contentDescription="@string/intro_slider_image_4" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/slide_4_title"
-            android:textColor="@android:color/white"
-            android:textSize="@dimen/slide_title"
-            android:textStyle="bold" />
 
         <TextView
             android:layout_width="wrap_content"
