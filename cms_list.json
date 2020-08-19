@@ -1,10 +1,14 @@
 [
  {
     "schoolName": "e-EdPort Online School",
-    "schoolUrl": "https://cms001.e-edport.com"
+    "schoolUrl": "https://cms.schooltimes.ca"
 },
  {
-    "schoolName": "Genius International Public School",
-    "schoolUrl": "https://cms.schooltimes.ca/"
+    "schoolName": "DAV Centenary Public School, Jawahar Nagar, Mandi",
+    "schoolUrl": "https://cms.davschoolmandi.com/"
+},
+ {
+    "schoolName": "DAV Public School, Sundar Nagar, Mandi",
+    "schoolUrl": "#"
 } 
 ]
