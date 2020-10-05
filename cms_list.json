@@ -1,18 +1,10 @@
 [
   {
-    "schoolName": "Schooltimes Canada",
-    "schoolUrl": "https://cms.schooltimes.ca"
-},
- {
     "schoolName": "e-EdPort Online School",
-    "schoolUrl": "https://inder-s-school-f783.thinkific.com/"
+    "schoolUrl": "https://cms.e-edport.com/"
 },
  {
-    "schoolName": "DAV Centenary Public School, Jawahar Nagar, Mandi",
-    "schoolUrl": "https://cms.davschoolmandi.com/"
-},
- {
-    "schoolName": "DAV Public School, Sundar Nagar, Mandi",
-    "schoolUrl": "#"
-} 
+    "schoolName": "SchoolTimes Canada",
+    "schoolUrl": "http://cms.schooltimes-d.ca/"
+}
 ]
